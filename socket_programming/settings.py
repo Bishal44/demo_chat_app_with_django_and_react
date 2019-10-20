@@ -27,8 +27,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'djoser',
 ]
-
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -60,6 +67,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'socket_programming.wsgi.application'
 
+STREAM_API_KEY = YOUR_STREAM_API_KEY # https://getstream.io/dashboard/
+STREAM_API_SECRET = YOUR_STREAM_API_SECRET
+DJOSER = {
+    'SERIALIZERS': {
+        'token': 'auth.serializers.StreamTokenSerializer',
+    }
+}
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
