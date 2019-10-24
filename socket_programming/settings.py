@@ -16,8 +16,7 @@ SECRET_KEY = '&wc-6=@ddy31s3vj%#lv!u7(!@6lb284#)a&6n5+(wq#sl^$^7'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-
+CORS_ORIGIN_ALLOW_ALL = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -30,6 +29,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
+    'corsheaders',
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -37,6 +37,7 @@ REST_FRAMEWORK = {
     )
 }
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -67,8 +68,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'socket_programming.wsgi.application'
 
-STREAM_API_KEY = YOUR_STREAM_API_KEY # https://getstream.io/dashboard/
-STREAM_API_SECRET = YOUR_STREAM_API_SECRET
+STREAM_API_KEY = '6mwxpsezvpp4' # https://getstream.io/dashboard/
+STREAM_API_SECRET = 'ggt66rr6e42wzntwpzsxe6an2wys3fm5bqtvut2f4bpq8w6h76t3cg22jrma573m'
 DJOSER = {
     'SERIALIZERS': {
         'token': 'auth.serializers.StreamTokenSerializer',
